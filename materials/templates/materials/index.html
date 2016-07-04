@@ -1,7 +1,12 @@
+{% extends "materials/layout.html" %}
+
 <html> 
-    <head><title>Woochang ERP</title></head>
+
+    {% block content %}
 	<body>
-        <h1>{{customer}} Material List</h1>
+		<h1>{{customer}} Material List</h1>
+    	<div class="table-responsive">
+        
         <table class="table table-striped">
 	        <thead>
 	            <tr>
@@ -25,5 +30,7 @@
             {% endfor %} 
             </tbody>
         </table>
+        </div>
     </body>
+    {% endblock %}
 </html>
