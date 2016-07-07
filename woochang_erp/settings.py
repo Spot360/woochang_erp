@@ -124,9 +124,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_URL = os.path.join(BASE_DIR, '/static/')
 
-STATIC_ROOT = []
+# STATIC_ROOT = "/woochang/static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static"),
+    '/materials/static/',
+    '/customers/static/',
+]
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-   'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
