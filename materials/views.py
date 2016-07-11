@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 from .models import Material
+from .models import Incoming
 
 def index(request):
 	try:
@@ -21,6 +22,14 @@ def index_detail(request, customer):
 	material_list = user.material_set.all().order_by('material_name').order_by('customer')
 	context = {'material_list': material_list,'customer':customer}
 	return render(request, 'materials/index.html', context)
+
+def incoming(request):
+	try:
+		incoming_list = Incoming.objects.all().order_by('incoming_date')
+	except:
+	 	raise Http404('Nothing incoming')
+	context = {'incoming_list':incoming_list}
+	return render(request, 'materials/incoming.html', context)
 
 def outgoing_detail(request, customer_id):
 	# material_list = get_object_or_404(Material, pk=customer_id)

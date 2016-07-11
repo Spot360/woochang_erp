@@ -6,7 +6,7 @@ urlpatterns = [
 	url(r'^(?P<customer>\w+)/$', views.index_detail, name='index'),
 
 	# url(r'^material/$', views.MaterialList.as_view(), name='material_list'),
-	# url(r'^incoming/$', views.IncomingList.as_view(), name='incoming_list'),
+	url(r'^incoming/$', views.incoming, name='incoming'),
 	# url(r'^outgoing/$', views.OutgoingList.as_view(), name='outgoing_list'),
 	
 	# url(r'^material/(?P<pk>\d+)/$', views.MaterialDetail.as_view(), name='material_detail'),

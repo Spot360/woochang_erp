@@ -1,0 +1,44 @@
+{% extends "materials/layout.html" %}
+
+<html> 
+
+    {% block content %}
+	<body>
+		<h1>{{Date}} Incoming List</h1>
+    	<div class="table-responsive">
+        
+        <table class="table table-striped">
+	        <thead>
+	            <tr>
+					<td><B>Incoming Date</B></td>
+	            	<td><B>Customer's Name</B></td>
+	                <td><B>Material's Name</B></td>
+	                <td><B>Material's Code</B></td>
+	                <td><B>Control Code</B></td>
+					<td><B>Zone Code</B></td>
+					<td><B>Pallet Code</B></td>
+	                <td><B>Incoming Unit</B></td>
+					<td><B>Incoming Count</B></td>
+	            </tr>
+	        </thead>
+            <tbody>
+            {% for incoming in incoming_list %}
+	            <tr>
+					<td> {{incoming.incoming_date}}</td>
+	            	<td>
+	            	<a href="{{material.customer}}/">{{incoming.material.customer}}</a></td>
+	                <td> {{incoming.material.material_name}}</td>
+	                <td> {{incoming.material.material_code}} </td>
+	                <td> {{incoming.material.control_code}} </td>
+					<td> {{incoming.zone}} </td>
+					<td> {{incoming.pallet}} </td>
+	                <td> {{incoming.inconing_unit}} </td>
+					<td> {{incoming.incoming_count}} </td>
+	            </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+        </div>
+    </body>
+    {% endblock %}
+</html>
