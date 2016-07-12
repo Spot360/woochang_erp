@@ -40,24 +40,23 @@ class Packing(models.Model):
 	def __str__(self):
 		return self.Packing_code
 
-class Outgoing(models.Model):
-	pallet = models.ForeignKey(Pallet)
-	material = models.ForeignKey(Material)
-	outgoing_date = models.DateTimeField('date outgoing')
-	# outgoing_unit = models.ForeignKey(Unit)
-	# packing = models.ForeignKey(Packing)
-	outgoing_count = models.IntegerField(default = 0)
-	
-	def __str__(self):
-		return '{} {}'.format(self.outgoing_date, self.material)
-
 class Incoming(models.Model):
 	pallet = models.ForeignKey(Pallet)
 	material = models.ForeignKey(Material)
 	incoming_date = models.DateTimeField('date incoming')
-	inconing_unit = models.ForeignKey(Unit)
+	incoming_unit = models.ForeignKey(Unit)
 	incoming_count = models.IntegerField(default = 0)
+
+	def __str__(self):
+		return '{} {} {}'.format(self.incoming_date, self.pallet, self.material)
+
+class Outgoing(models.Model):
+	pallet = models.ForeignKey(Pallet)
+	material = models.ForeignKey(Material)
+	outgoing_date = models.DateTimeField('date outgoing')
+	outgoing_unit = models.ForeignKey(Unit)
+	packing = models.ForeignKey(Packing)
+	outgoing_count = models.IntegerField(default = 0)
 	
 	def __str__(self):
-		return '{} {}'.format(self.incoming_date, self.material)
-
+		return '{} {}'.format(self.outgoing_date, self.material)

@@ -22,19 +22,18 @@
 	            </tr>
 	        </thead>
             <tbody>
-            {% for incoming in incoming_list %}
-	            <tr>
+				{% for incoming in incoming_list %}
+				<tr>
 					<td> {{incoming.incoming_date}}</td>
-	            	<td>
-	            	<a href="{{material.customer}}/">{{incoming.material.customer}}</a></td>
-	                <td> {{incoming.material.material_name}}</td>
-	                <td> {{incoming.material.material_code}} </td>
-	                <td> {{incoming.material.control_code}} </td>
-					<td> {{incoming.zone}} </td>
-					<td> {{incoming.pallet}} </td>
-	                <td> {{incoming.inconing_unit}} </td>
+					<td> <a href="c/{{incoming.material.customer}}/">{{incoming.material.customer}}</a></td>
+					<td> {{incoming.material.material_name}}</td>
+					<td> {{incoming.material.material_code}} </td>
+					<td> {{incoming.material.control_code}} </td>
+					<td> {{incoming.pallet.zone}} </td>
+					<td><a href="p/{{incoming.pallet.id}}/"> {{incoming.pallet}}</a> </td>
+					<td> {{incoming.incoming_unit}} </td>
 					<td> {{incoming.incoming_count}} </td>
-	            </tr>
+				</tr>
             {% endfor %} 
             </tbody>
         </table>

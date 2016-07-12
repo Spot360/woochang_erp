@@ -3,8 +3,7 @@ from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 
 # Create your views here.
-from .models import Material
-from .models import Incoming
+from .models import *
 
 def index(request):
 	try:
@@ -30,6 +29,34 @@ def incoming(request):
 	 	raise Http404('Nothing incoming')
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
+	
+def incoming_pallet(request, pallet_id):
+	try:
+		pallet = Pallet.objects.get(id=pallet_id)
+	except:
+		raise Http404('Nothing information')
+	incoming_list = pallet.incoming_set.all().order_by('material')
+	context = {'incoming_list':incoming_list}
+	return render(request, 'materials/incoming.html', context)
+
+def incoming_customer(request, customer):
+	# material = Material.objects.get(customer=customer)
+	user = User.objects.get(username=customer)
+	materials = user.material_set.all()
+	material_name =[]
+	for material in materials:
+    		material_name.append(material.material_name)
+	# try:
+	# 	user = User.objects.get(username=customer)
+	# 	material = user.material_set.all()
+	# 	material_name = material.material_name
+	# except:
+	# 	raise Http404('Nothing information')
+	for name in material_name:
+    		incoming_list=Incoming.objects.filter(material=name) 
+	context = {'incoming_list':incoming_list}
+	return render(request, 'materials/incoming.html', context)
+
 
 def outgoing_detail(request, customer_id):
 	# material_list = get_object_or_404(Material, pk=customer_id)
