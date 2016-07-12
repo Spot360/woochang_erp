@@ -8,7 +8,7 @@ urlpatterns = [
 	# url(r'^material/$', views.MaterialList.as_view(), name='material_list'),
 	url(r'^incoming/$', views.incoming, name='incoming'),
 	url(r'^incoming/p/([0-9]+)/$', views.incoming_pallet, name="incoming_p"),
-	url(r'^incoming/c/(?P<customer>\w+)/$', views.incoming_customer, name="incoming_c"),
+	url(r'^incoming/c/([0-9]+)/$', views.incoming_customer, name="incoming_c"),
 	# url(r'^outgoing/$', views.OutgoingList.as_view(), name='outgoing_list'),
 	
 	# url(r'^material/(?P<pk>\d+)/$', views.MaterialDetail.as_view(), name='material_detail'),

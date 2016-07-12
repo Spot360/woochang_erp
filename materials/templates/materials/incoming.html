@@ -24,8 +24,8 @@
             <tbody>
 				{% for incoming in incoming_list %}
 				<tr>
-					<td> {{incoming.incoming_date}}</td>
-					<td> <a href="c/{{incoming.material.customer}}/">{{incoming.material.customer}}</a></td>
+					<td> {{incoming.incoming_date.year}}/{{incoming.incoming_date.month}}/{{incoming.incoming_date.day}}</td>
+					<td> <a href="c/{{incoming.material.customer.id}}/">{{incoming.material.customer}}</a></td>
 					<td> {{incoming.material.material_name}}</td>
 					<td> {{incoming.material.material_code}} </td>
 					<td> {{incoming.material.control_code}} </td>
@@ -34,7 +34,7 @@
 					<td> {{incoming.incoming_unit}} </td>
 					<td> {{incoming.incoming_count}} </td>
 				</tr>
-            {% endfor %} 
+            {% endfor %}
             </tbody>
         </table>
         </div>
