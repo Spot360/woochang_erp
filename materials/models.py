@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from customers.models import Customer
 
 # Create your models here.
 class Material(models.Model):
-	customer = models.ForeignKey(User)
+	customer = models.ForeignKey(Customer)
 	material_name = models.CharField(max_length = 128)
 	material_code = models.CharField(max_length = 20)
 	control_code = models.CharField(max_length = 20)
@@ -13,7 +14,7 @@ class Material(models.Model):
 	memo = models.TextField(blank = True)
 	
 	def __str__(self):
-		return '{} ( {} [{}] )'.format(self.customer.username,self.material_name,self.material_code)
+		return '{} ( {} [{}] )'.format(self.customer.customer_name,self.material_name,self.material_code)
 
 class Zone(models.Model):
 	zone = models.CharField(max_length = 20)

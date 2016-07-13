@@ -26,17 +26,27 @@ def index_detail(request, customer):
 def incoming(request):
 	try:
 		incoming_list = Incoming.objects.all().order_by('incoming_date')
+		# customer_list = Customer.objects.all()
 	except:
 	 	raise Http404('Nothing incoming')
-	customer_name = []
-	for incoming in incoming_list:
-		customer_id = incoming.material.customer.id
-		customer = Customer.objects.filter(user_id=customer_id)
-		customer_name += customer
-	print('@@@@@@@@@@@@@@@@@@@@@@', customer_name)
-	context = {'incoming_list':incoming_list, 'customer_name':customer_name}
+	# customer_name = []
+	# for incoming in incoming_list:
+	# 	customer_id = incoming.material.customer.id
+	# 	customer = Customer.objects.filter(user_id=customer_id)
+	# 	customer_name += customer
+	# print('@@@@@@@@@@@@@@@@@@@@@@', customer_name)
+	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 	
+def incoming_material(request, material_id):
+	try:
+		material = Material.objects.get(id=material_id)
+	except:
+		raise Http404('Nothing information')
+	incoming_list = material.incoming_set.all().order_by('material')
+	context = {'incoming_list':incoming_list}
+	return render(request, 'materials/incoming.html', context)
+
 def incoming_pallet(request, pallet_id):
 	try:
 		pallet = Pallet.objects.get(id=pallet_id)
@@ -46,10 +56,26 @@ def incoming_pallet(request, pallet_id):
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 
+def incoming_zone(request, zone_id):
+	try:
+		zone = Zone.objects.get(id = zone_id)
+		pallets = zone.pallet_set.all()
+	except:
+		raise Http404('Nothing information')
+	pallet_id = []
+	for pallet in pallets:
+		pallet_id.append(pallet.id)
+	incoming_list = []
+	for id in pallet_id:
+		incoming = Incoming.objects.filter(pallet_id = id)
+		incoming_list += incoming
+	context = {'incoming_list':incoming_list}
+	return render(request, 'materials/incoming.html', context)
+
 def incoming_customer(request, customer_id):
 	try:
-		user = User.objects.get(id=customer_id)
-		materials = user.material_set.all()
+		customer = Customer.objects.get(id=customer_id)
+		materials = customer.material_set.all()
 	except:
 		raise Http404('Nothing information')
 	material_id =[]
