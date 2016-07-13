@@ -22,7 +22,7 @@
             {% for material in material_list %}
 	            <tr>
 	            	<td>
-	            	<a href="c/{{material.customer}}/">{{material.customer}}</a></td>
+	            	<a href="c/{{material.customer.id}}/">{{material.customer}}</a></td>
 	                <td> {{material.material_name}}</td>
 	                <td> {{material.material_code}} </td>
 	                <td> {{material.control_code}} </td>

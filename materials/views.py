@@ -14,12 +14,12 @@ def index(request):
 	context = {'material_list': material_list, 'customer':'Total',}
 	return render(request, 'materials/index.html', context)
 
-def index_detail(request, customer):
+def index_detail(request, customer_id):
 	try:
-		user = User.objects.get(username=customer)
+		customer = Customer.objects.get(id=customer_id)
 	except:
 		raise Http404('Nothing material')
-	material_list = user.material_set.all().order_by('material_name').order_by('customer')
+	material_list = customer.material_set.all().order_by('material_name')
 	context = {'material_list': material_list,'customer':customer}
 	return render(request, 'materials/index.html', context)
 
@@ -96,35 +96,102 @@ def outgoing(request):
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
 
-def outgoing_detail(request, customer_id):
-	# material_list = get_object_or_404(Material, pk=customer_id)
-	material_list = Material.objects.get(pk=customer_id)
-	context = {'material_list':material_list}
-	return render(request, 'materials/outgoing_detail.html', context)
+def outgoing_material(request, material_id):
+	try:
+		material = Material.objects.get(id=material_id)
+	except:
+		raise Http404('Nothing information')
+	outgoing_list = material.outgoing_set.all().order_by('material')
+	context = {'outgoing_list':outgoing_list}
+	return render(request, 'materials/outgoing.html', context)
 
-	# return HttpResponse("Star WooChang Material ERP")
+def outgoing_pallet(request, pallet_id):
+	try:
+		pallet = Pallet.objects.get(id=pallet_id)
+	except:
+		raise Http404('Nothing information')
+	outgoing_list = pallet.outgoing_set.all().order_by('material')
+	context = {'outgoing_list':outgoing_list}
+	return render(request, 'materials/outgoing.html', context)
+
+def outgoing_zone(request, zone_id):
+	try:
+		zone = Zone.objects.get(id = zone_id)
+		pallets = zone.pallet_set.all()
+	except:
+		raise Http404('Nothing information')
+	pallet_id = []
+	for pallet in pallets:
+		pallet_id.append(pallet.id)
+	outgoing_list = []
+	for id in pallet_id:
+		outgoing = Outgoing.objects.filter(pallet_id = id)
+		outgoing_list += outgoing
+	context = {'outgoing_list':outgoing_list}
+	return render(request, 'materials/outgoing.html', context)
+
+def outgoing_customer(request, customer_id):
+	try:
+		customer = Customer.objects.get(id=customer_id)
+		materials = customer.material_set.all()
+	except:
+		raise Http404('Nothing information')
+	material_id =[]
+	for material in materials:
+		material_id.append(material.id)
+	outgoing_list = []
+	for id in material_id:
+		outgoing = Outgoing.objects.filter(material_id=id)
+		outgoing_list += outgoing
+	print('@@@@@@@@@@@@@@@@@@@@@@', outgoing_list)
+	context = {'outgoing_list':outgoing_list}
+	return render(request, 'materials/outgoing.html', context)
 
 def submit(request):
 	return HttpResponse("Star WooChang Material ERP")
 
+# def result(request):
+# 	incoming_list = Incoming.objects.all()
+# 	outgoing_list = Outgoing.objects.all()
+# 	material_list = Material.objects.all()
+# 	packing_list = Packing.objects.all()
+# 	material_id = []
+# 	for material in material_list:
+# 		material_id.append(material.id)
+	
+# 	count_result = []
+# 	for id in material_id:
+# 		result={}
+# 		for packing in packing_list:
+# 			incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
+# 			result[packing.Packing_code] = incoming_counts['incoming_count__sum']
+			
 def result(request):
-	incoming_list = Incoming.objects.all()
-	outgoing_list = Outgoing.objects.all()
 	material_list = Material.objects.all()
 	packing_list = Packing.objects.all()
-	material_id = []
+	material_result = []
+
+	incoming_pallet = []
+	outgoing_pallet = []
 	for material in material_list:
-		material_id.append(material.id)
+		incoming = Incoming.objects.filter(material_id=material.id)
+
+		incoming_pallet.append(incoming.pallet.id)
 	
-	count_result = []
-	for id in material_id:
-		result={}
-		for packing in packing_list:
-			incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
-			result[packing.Packing_code] = incoming_counts['incoming_count__sum']
-			
+	# for material in material_list:
+	# 	result={}
+	# 	result['customer'] = material.customer
+	# 	result['material_name'] = material.material_name
+	# 	result['material_code'] = material.material_code
+	# 	result['control_code'] = material.control_code
+	# 	count = []
+	# 	for packing in packing_list:
+	# 		incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
+	# 		result[packing.Packing_code] = incoming_counts['incoming_count__sum']
 
+	# 	result['count'] = count
+	# 	material_result.append(result)
 
-	
-
-	return render(request, 'materials/result.html', context)
+	# context = {'material_result':material_result}
+	# return render(request, 'materials/result.html', context)
+	return HttpResponse("Star WooChang Material ERP")
