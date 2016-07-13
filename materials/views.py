@@ -28,7 +28,7 @@ def incoming(request):
 		incoming_list = Incoming.objects.all().order_by('incoming_date')
 		# customer_list = Customer.objects.all()
 	except:
-	 	raise Http404('Nothing incoming')
+	 	raise Http404('Nothing information')
 	# customer_name = []
 	# for incoming in incoming_list:
 	# 	customer_id = incoming.material.customer.id
@@ -88,6 +88,13 @@ def incoming_customer(request, customer_id):
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 
+def outgoing(request):
+	try:
+		outgoing_list = Outgoing.objects.all().order_by('outgoing_date')
+	except:
+	 	raise Http404('Nothing information')
+	context = {'outgoing_list':outgoing_list}
+	return render(request, 'materials/outgoing.html', context)
 
 def outgoing_detail(request, customer_id):
 	# material_list = get_object_or_404(Material, pk=customer_id)
@@ -101,4 +108,8 @@ def submit(request):
 	return HttpResponse("Star WooChang Material ERP")
 
 def result(request):
-	return HttpResponse("Star WooChang Material ERP")
+	incoming_list = Incoming.objects.all()
+	outgoing_list = Outgoing.objects.all()
+	count_result = []
+	
+	return render(request, 'materials/result.html', context)
