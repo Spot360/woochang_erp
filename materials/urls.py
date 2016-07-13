@@ -15,7 +15,9 @@ urlpatterns = [
 	url(r'^outgoing/p/([0-9]+)/$', views.outgoing_pallet, name="outgoing_p"),
 	url(r'^outgoing/c/([0-9]+)/$', views.outgoing_customer, name="outgoing_c"),
 	url(r'^outgoing/z/([0-9]+)/$', views.outgoing_zone, name="outgoing_z"),
-	url(r'^outgoing/m/([0-9]+)/$', views.outgoing_material, name="outgoing_m")
+	url(r'^outgoing/m/([0-9]+)/$', views.outgoing_material, name="outgoing_m"),
+
+	url(r'^result/$', views.result, name='result'),
 	# url(r'^outgoing/$', views.OutgoingList.as_view(), name='outgoing_list'),
 	
 	# url(r'^material/(?P<pk>\d+)/$', views.MaterialDetail.as_view(), name='material_detail'),
