@@ -110,6 +110,21 @@ def submit(request):
 def result(request):
 	incoming_list = Incoming.objects.all()
 	outgoing_list = Outgoing.objects.all()
-	count_result = []
+	material_list = Material.objects.all()
+	packing_list = Packing.objects.all()
+	material_id = []
+	for material in material_list:
+		material_id.append(material.id)
 	
+	count_result = []
+	for id in material_id:
+		result={}
+		for packing in packing_list:
+			incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
+			result[packing.Packing_code] = incoming_counts['incoming_count__sum']
+			
+
+
+	
+
 	return render(request, 'materials/result.html', context)
