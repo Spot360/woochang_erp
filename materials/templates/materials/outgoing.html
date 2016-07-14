@@ -33,7 +33,11 @@
 					<td> <a href="z/{{outgoing.pallet.zone.id}}/">{{outgoing.pallet.zone}}</a></td>
 					<td> <a href="p/{{outgoing.pallet.id}}/"> {{outgoing.pallet}}</a></td>
 					<td> {{outgoing.outgoing_unit}} </td>
+					{% if outgoing.unpackBox_count %}
+					<td> {{outgoing.packing}}({{outgoing.unpackBox_count}}) </td>
+					{% else %}
 					<td> {{outgoing.packing}} </td>
+					{% endif %}
 					<td> {{outgoing.outgoing_count}} </td>
 				</tr>
             {% endfor %}
