@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
+from django.db.models import Sum
 
 # Create your views here.
 from .models import *
@@ -143,7 +144,6 @@ def outgoing_customer(request, customer_id):
 	for id in material_id:
 		outgoing = Outgoing.objects.filter(material_id=id)
 		outgoing_list += outgoing
-	print('@@@@@@@@@@@@@@@@@@@@@@', outgoing_list)
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
 
@@ -173,14 +173,6 @@ def result(request):
 	
 	material_result = []
 
-	pallet_count = []
-	for material in material_list:
-		incoming_list = Incoming.objects.filter(material_id=material.id)
-		for incoming in incoming_list:
-			pallet_cuont.append(incoming.pallet)
-
-	print('@@@@@@@@@@@@@@@@@@@@@@',len(list(set(incoming_pallet)) ))
-	
 	for material in material_list:
 		result={}
 		result['customer'] = material.customer
@@ -188,13 +180,30 @@ def result(request):
 		result['material_code'] = material.material_code
 		result['control_code'] = material.control_code
 		count = []
-		for packing in packing_list:
-			incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
-			result[packing.Packing_code] = incoming_counts['incoming_count__sum']
+		for unit in unit_list:
+			inunit_count= {}
+			inunit_counts = Incoming.objects.filter(material_id=material.id, incoming_unit_id=unit.id).aggregate(Sum('incoming_count'))
+			inunit_count[unit.unit_code] = inunit_counts['incoming_count__sum']
+
+			outunit_count = {}
+			outunit_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id).aggregate(Sum('outgoing_count'))
+			outunit_count[unit.unit_code] = outunit_counts['outgoing_count__sum']
+
+			packing_count = []
+			for packing in packing_list:
+				outgoing_count = {}
+				outgoing_counts = Outgoing.objects.filter(material_id=material.id, packing_id=packing.id).aggregate(Sum('outgoing_count'))
+				outgoing_count[packing.Packing_code] = outgoing_counts['outgoing_count__sum']
+				packing_count.append(outgoing_count)
+			outunit_count['packing'] = packing_count
+
+			count.append(inunit_count)
+			count.append(outunit_count)
 
 		result['count'] = count
+		print('#########################',result)
 		material_result.append(result)
 
 	context = {'material_result':material_result}
-	# return render(request, 'materials/result.html', context)
-	return HttpResponse("Star WooChang Material ERP")
+	return render(request, 'materials/result.html', context)
+	# return HttpResponse("Star WooChang Material ERP")

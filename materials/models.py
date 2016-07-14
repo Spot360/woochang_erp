@@ -58,6 +58,7 @@ class Outgoing(models.Model):
 	outgoing_unit = models.ForeignKey(Unit)
 	packing = models.ForeignKey(Packing)
 	outgoing_count = models.IntegerField(default = 0)
+	unpackBox_count = models.IntegerField(null=True, blank=True)
 	
 	def __str__(self):
 		return '{} {}'.format(self.outgoing_date, self.material)
