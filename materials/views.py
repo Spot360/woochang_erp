@@ -196,11 +196,15 @@ def result(request):
 				pack_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id, packing_id=packing.id).aggregate(Sum('outgoing_count'))
 				pack_count[packing.Packing_code] = pack_counts['outgoing_count__sum']
 				packing_count.append(pack_count)
-				outunit_count[unit.unit_code+'packing'] = packing_count
+				outunit_count[unit.unit_code+'_packing'] = packing_count
 
 			incoming_count.append(inunit_count)
 			outgoing_count.append(outunit_count)
-
+		# print('@@@@@@@@@@@@@',incoming_count)
+		# result['box_count'] = dict(incoming_count)['BOX'] - dict(outgoing_count)['BOX']
+		# result['packing_box']
+		# result['unpacking_box']
+		# result['ea_count']
 		result['incoming_count'] = incoming_count
 		result['outgoing_count'] = outgoing_count
 		print('#########################',result['outgoing_count'])
