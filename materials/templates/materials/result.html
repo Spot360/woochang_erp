@@ -12,7 +12,7 @@
 	                <td><B>Material's Name</B></td>
 	                <td><B>Material's Code</B></td>
 	                <td><B>Control Code</B></td>
-<!-- 					<td><B>Zone Code</B></td>
+ 					<!--<td><B>Zone Code</B></td>
 					<td><B>Pallet Code</B></td> -->
 					<td><B>Total Box Count</B></td>
 					<td><B>Packing Box Count</B></td>
@@ -21,18 +21,18 @@
 	            </tr>
 	        </thead>
             <tbody>
-				{% for result in result_list %}
+				{% for result in material_result %}
 				<tr>
-					<td> {{result.incoming_date.year}} </td>
-					<td> {{result.material.customer}} </td>
-					<td> {{result.material.material_name}} </td>
-					<td> {{result.material.material_code}} </td>
-					<td> {{result.material.control_code}} </td>
-					<td> {{result.pallet.zone}} </td>
-					<td> {{result.pallet}} </td>
-					<td> {{result.incoming_unit}} </td>
-					<td> {{result.incoming_count}} </td>
-                    <td> {{result.incoming_count}} </td>
+					<td> {{result.customer}} </td>
+					<td> {{result.material_name}} </td>
+					<td> {{result.material_code}} </td>
+					<td> {{result.control_code}} </td>
+					<!--<td> {{result.zone}} </td>					
+					<td> {{result.pallet}} </td>-->
+					<td> {{result.box_count}} </td>
+					<td> {{result.packing_box}} </td>
+					<td> {{result.unpacking_box}} </td>
+                    <td> {{result.ea_count}} </td>
 				</tr>
             {% endfor %}
             </tbody>

@@ -179,7 +179,8 @@ def result(request):
 		result['material_name'] = material.material_name
 		result['material_code'] = material.material_code
 		result['control_code'] = material.control_code
-		count = []
+		incoming_count = []
+		outgoing_count = []
 		for unit in unit_list:
 			inunit_count= {}
 			inunit_counts = Incoming.objects.filter(material_id=material.id, incoming_unit_id=unit.id).aggregate(Sum('incoming_count'))
@@ -191,17 +192,18 @@ def result(request):
 
 			packing_count = []
 			for packing in packing_list:
-				outgoing_count = {}
-				outgoing_counts = Outgoing.objects.filter(material_id=material.id, packing_id=packing.id).aggregate(Sum('outgoing_count'))
-				outgoing_count[packing.Packing_code] = outgoing_counts['outgoing_count__sum']
-				packing_count.append(outgoing_count)
-			outunit_count['packing'] = packing_count
+				pack_count = {}
+				pack_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id, packing_id=packing.id).aggregate(Sum('outgoing_count'))
+				pack_count[packing.Packing_code] = pack_counts['outgoing_count__sum']
+				packing_count.append(pack_count)
+				outunit_count[unit.unit_code+'packing'] = packing_count
 
-			count.append(inunit_count)
-			count.append(outunit_count)
+			incoming_count.append(inunit_count)
+			outgoing_count.append(outunit_count)
 
-		result['count'] = count
-		print('#########################',result)
+		result['incoming_count'] = incoming_count
+		result['outgoing_count'] = outgoing_count
+		print('#########################',result['outgoing_count'])
 		material_result.append(result)
 
 	context = {'material_result':material_result}
