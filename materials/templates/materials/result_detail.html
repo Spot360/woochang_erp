@@ -18,7 +18,6 @@
 					<td><B>Total EA Count</B></td>
 					<!-- <td><B>Packing Box Count</B></td> -->
 					<td><B>Opened Box Count</B></td>
-					<!-- <td><B>Total EA Count</B></td> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -35,10 +34,9 @@
 					{% else %}
 					<td> {{result.TTL_BOX}} </td>
 					{% endif %}
-					<td> {{result.TTL_EA}} </td>					
+					<td> {{result.TTL_EA}} </td>	
 					<!-- <td> {{result.packing_box}} </td> -->
 					<td> {{result.unpacking_Box}} </td>
-					<!-- <td> {{result.ea_count}} </td> -->
 				</tr>
 				{% endfor %}
 			</tbody>

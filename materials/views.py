@@ -158,6 +158,7 @@ def result(request, customer_id=''):
 	for material in material_list:
 		result={}
 		result['customer'] = material.customer
+		result['material_id'] = material.id
 		result['material_name'] = material.material_name
 		result['material_code'] = material.material_code
 		result['control_code'] = material.control_code
@@ -190,7 +191,8 @@ def result(request, customer_id=''):
 	if customer_id == '':
 		context = {'material_result':material_result, 'customer':'Total'}
 	else:
-		context = {'material_result':material_result, 'customer':customer}
+		# context = {'material_result':material_result, 'customer':customer}
+		context = {'material_result':material_result}
 	return render(request, 'materials/result.html', context)
 
 def result_detail(request, material_id=''):

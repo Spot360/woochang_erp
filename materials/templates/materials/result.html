@@ -16,14 +16,18 @@
 					<td><B>Total EA Count</B></td>
 					<!-- <td><B>Packing Box Count</B></td> -->
 					<td><B>Opened Box Count</B></td>
-					<!-- <td><B>Total EA Count</B></td> -->
 				</tr>
 			</thead>
 			<tbody>
 				{% for result in material_result %}
 				<tr>
+					{% if customer == 'Total' %}
 					<td> <a href="c{{result.customer.id}}/">{{result.customer}}</a> </td>
-					<td> <a href="m{{result.material_name}}/">{{result.material_name}}</a> </td>
+					<td> <a href="m{{result.material_id}}/">{{result.material_name}}</a> </td>
+					{% else %}
+					<td> {{result.customer}} </td>
+					<td> {{result.material_name}} </td>
+					{% endif %}
 					<td> {{result.material_code}} </td>
 					<td> {{result.control_code}} </td>
 					{% if result.unpacking_Box %}
@@ -34,7 +38,6 @@
 					<td> {{result.TTL_EA}} </td>
 					<!-- <td> {{result.packing_box}} </td> -->
 					<td> {{result.unpacking_Box}} </td>
-					<!-- <td> {{result.ea_count}} </td> -->
 				</tr>
 				{% endfor %}
 			</tbody>
