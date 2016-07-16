@@ -26,12 +26,12 @@
 				{% for outgoing in outgoing_list %}
 				<tr>
 					<td> {{outgoing.outgoing_date.year}}/{{outgoing.outgoing_date.month}}/{{outgoing.outgoing_date.day}}</td>
-					<td> <a href="c/{{outgoing.material.customer.id}}/">{{outgoing.material.customer}}</a></td>
-					<td> <a href="m/{{outgoing.material.id}}/"> {{outgoing.material.material_name}}</a></td>
+					<td> <a href="c{{outgoing.material.customer.id}}/">{{outgoing.material.customer}}</a></td>
+					<td> <a href="m{{outgoing.material.id}}/"> {{outgoing.material.material_name}}</a></td>
 					<td> {{outgoing.material.material_code}} </td>
 					<td> {{outgoing.material.control_code}} </td>
-					<td> <a href="z/{{outgoing.pallet.zone.id}}/">{{outgoing.pallet.zone}}</a></td>
-					<td> <a href="p/{{outgoing.pallet.id}}/"> {{outgoing.pallet}}</a></td>
+					<td> <a href="z{{outgoing.pallet.zone.id}}/">{{outgoing.pallet.zone}}</a></td>
+					<td> <a href="p{{outgoing.pallet.id}}/"> {{outgoing.pallet}}</a></td>
 					<td> {{outgoing.outgoing_unit}} </td>
 					{% if outgoing.unpackBox_count %}
 					<td> {{outgoing.packing}}({{outgoing.unpackBox_count}}) </td>
