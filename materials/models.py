@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 from customers.models import Customer
@@ -47,6 +48,7 @@ class Incoming(models.Model):
 	incoming_date = models.DateTimeField('date incoming')
 	incoming_unit = models.ForeignKey(Unit)
 	incoming_count = models.IntegerField(default = 0)
+	unpackBox_count = models.IntegerField(default = 0)
 
 	def __str__(self):
 		return '{} {} {}'.format(self.incoming_date, self.pallet, self.material)
@@ -58,7 +60,7 @@ class Outgoing(models.Model):
 	outgoing_unit = models.ForeignKey(Unit)
 	packing = models.ForeignKey(Packing)
 	outgoing_count = models.IntegerField(default = 0)
-	unpackBox_count = models.IntegerField(null=True, blank=True)
+	unpackBox_count = models.IntegerField(default = 0)
 	
 	def __str__(self):
 		return '{} {}'.format(self.outgoing_date, self.material)

@@ -29,13 +29,7 @@ def incoming(request):
 		incoming_list = Incoming.objects.all().order_by('incoming_date')
 		# customer_list = Customer.objects.all()
 	except:
-	 	raise Http404('Nothing information')
-	# customer_name = []
-	# for incoming in incoming_list:
-	# 	customer_id = incoming.material.customer.id
-	# 	customer = Customer.objects.filter(user_id=customer_id)
-	# 	customer_name += customer
-	# print('@@@@@@@@@@@@@@@@@@@@@@', customer_name)
+		raise Http404('Nothing information')
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 	
@@ -150,22 +144,6 @@ def outgoing_customer(request, customer_id):
 def submit(request):
 	return HttpResponse("Star WooChang Material ERP")
 
-# def result(request):
-# 	incoming_list = Incoming.objects.all()
-# 	outgoing_list = Outgoing.objects.all()
-# 	material_list = Material.objects.all()
-# 	packing_list = Packing.objects.all()
-# 	material_id = []
-# 	for material in material_list:
-# 		material_id.append(material.id)
-	
-# 	count_result = []
-# 	for id in material_id:
-# 		result={}
-# 		for packing in packing_list:
-# 			incoming_counts = Incoming.objects.filter(material_id=id, packing_id=packing.id).aggregate(Sum('incoming_count'))
-# 			result[packing.Packing_code] = incoming_counts['incoming_count__sum']
-			
 def result(request):
 	material_list = Material.objects.all()
 	packing_list = Packing.objects.all()
@@ -179,37 +157,38 @@ def result(request):
 		result['material_name'] = material.material_name
 		result['material_code'] = material.material_code
 		result['control_code'] = material.control_code
-		incoming_count = []
-		outgoing_count = []
+		incoming_unpack_box_counts = Incoming.objects.filter(material_id=material.id).aggregate(Sum('unpackBox_count'))
+		outgoing_unpack_box_counts = Outgoing.objects.filter(material_id=material.id).aggregate(Sum('unpackBox_count'))
+		
+		result['incoming_unpack_Box'] = incoming_unpack_box_counts['unpackBox_count__sum']
+		result['outgoing_unpack_Box'] = outgoing_unpack_box_counts['unpackBox_count__sum']
+
+		if (incoming_unpack_box_counts['unpackBox_count__sum'] or outgoing_unpack_box_counts['unpackBox_count__sum']):
+			if (incoming_unpack_box_counts['unpackBox_count__sum'] and outgoing_unpack_box_counts['unpackBox_count__sum']):
+				result['unpacking_Box'] = incoming_unpack_box_counts['unpackBox_count__sum'] + outgoing_unpack_box_counts['unpackBox_count__sum']
+			elif incoming_unpack_box_counts['unpackBox_count__sum']:
+				result['unpacking_Box'] = incoming_unpack_box_counts['unpackBox_count__sum']
+			else:
+				result['unpacking_Box'] = outgoing_unpack_box_counts['unpackBox_count__sum']
+		count_result = {}
 		for unit in unit_list:
-			inunit_count= {}
-			inunit_counts = Incoming.objects.filter(material_id=material.id, incoming_unit_id=unit.id).aggregate(Sum('incoming_count'))
-			inunit_count[unit.unit_code] = inunit_counts['incoming_count__sum']
+			incoming_counts = Incoming.objects.filter(material_id=material.id, incoming_unit_id=unit.id).aggregate(Sum('incoming_count'))
 
-			outunit_count = {}
-			outunit_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id).aggregate(Sum('outgoing_count'))
-			outunit_count[unit.unit_code] = outunit_counts['outgoing_count__sum']
+			outgoing_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id).aggregate(Sum('outgoing_count'))
+			if (incoming_counts['incoming_count__sum'] or outgoing_counts['outgoing_count__sum']):
+				if ( incoming_counts['incoming_count__sum'] and outgoing_counts['outgoing_count__sum'] ):
+					count_result[unit.unit_code] = incoming_counts['incoming_count__sum'] - outgoing_counts['outgoing_count__sum']
+				elif incoming_counts['incoming_count__sum']:
+					count_result[unit.unit_code] = incoming_counts['incoming_count__sum']
+				else:
+					count_result[unit.unit_code] = int('-'+str(outgoing_counts['outgoing_count__sum']))
+			else :
+				count_result[unit.unit_code] = 0
 
-			packing_count = []
-			for packing in packing_list:
-				pack_count = {}
-				pack_counts = Outgoing.objects.filter(material_id=material.id, outgoing_unit_id=unit.id, packing_id=packing.id).aggregate(Sum('outgoing_count'))
-				pack_count[packing.Packing_code] = pack_counts['outgoing_count__sum']
-				packing_count.append(pack_count)
-				outunit_count[unit.unit_code+'_packing'] = packing_count
-
-			incoming_count.append(inunit_count)
-			outgoing_count.append(outunit_count)
-		# print('@@@@@@@@@@@@@',incoming_count)
-		# result['box_count'] = dict(incoming_count)['BOX'] - dict(outgoing_count)['BOX']
-		# result['packing_box']
-		# result['unpacking_box']
-		# result['ea_count']
-		result['incoming_count'] = incoming_count
-		result['outgoing_count'] = outgoing_count
-		print('#########################',result['outgoing_count'])
+		result['TTL_PALLET'] = count_result['PALLET']
+		result['TTL_BOX'] = (material.Pallet_unit * count_result['PALLET']) + count_result['BOX']
+		result['TTL_EA'] = ( (material.Pallet_unit * count_result['PALLET'] + count_result['BOX']) * material.Box_unit) + count_result['EA']
 		material_result.append(result)
 
 	context = {'material_result':material_result}
 	return render(request, 'materials/result.html', context)
-	# return HttpResponse("Star WooChang Material ERP")
