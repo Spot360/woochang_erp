@@ -252,7 +252,12 @@ def result_detail(request, material_id=''):
 	return render(request, 'materials/result_detail.html', context)
 
 def incoming_form(request):
-	form = incomingForm()
+	if request.method == 'POST':
+		form = incomingForm(request.POST)
+		if form.is_valid():
+			form.save()
+	else:
+		form = incomingForm()
 	context = {'form':form}
 	return render(request, 'materials/incoming_form.html', context)
 
