@@ -3,9 +3,12 @@ from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.db.models import Sum
 
+from django.views.generic.edit import FormView
+
 # Create your views here.
 from .models import *
 from customers.models import *
+from .forms import *
 
 def index(request):
 	try:
@@ -247,3 +250,27 @@ def result_detail(request, material_id=''):
 		detail_result.append(result)
 	context = {'detail_result':detail_result, 'material':material.material_name}
 	return render(request, 'materials/result_detail.html', context)
+
+def incoming_form(request):
+	form = incomingForm()
+	context = {'form':form}
+	return render(request, 'materials/incoming_form.html', context)
+
+def outgoing_form(request):
+	form = outgoingForm()
+	context = {'form':form}
+	return render(request, 'materials/outgoing_form.html', context)
+
+
+
+# class incoming_form(FormView):
+# 	success_url = '/success/'
+# 	form_class = incomingForm
+
+# 	def get(self, request):
+# 		form = incomingForm()
+# 		context = {'form':form}
+# 		return render(request, 'materials/incomging_form.html', context)
+
+# 	def post(self, request):
+# 		form = incomingForm(request.POST)

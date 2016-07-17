@@ -20,13 +20,10 @@ urlpatterns = [
 	url(r'^result/$', views.result, name='result'),
 	url(r'^result/c(\d+)/$', views.result, name='result_c'),
 	url(r'^result/m(\S+)/$', views.result_detail, name='result_detail'),
-	# url(r'^outgoing/$', views.OutgoingList.as_view(), name='outgoing_list'),
-	
-	# url(r'^material/(?P<pk>\d+)/$', views.MaterialDetail.as_view(), name='material_detail'),
-	# url(r'^incoming/(?P<pk>\d+)/$', views.IncomingDetail.as_view(), name='incoming_detail'),
-	# url(r'^outgoing/(?P<pk>\d+)/$', views.OutgoingDetail.as_view(), name='outgoing_detail'),
 
-	# url(r'^outgoing/(?P<customer_id>\d+)/$', views.outgoing_detail, name='detail'),
-	# url(r'^outgoing/(?P<customers>)/submit/$', views.submit, name='submit'),
-	# url(r'^outgoing/(?P<customers>)/result/$', views.result, name='result'),
+	# url(r'^work/incoming/$', views.incoming_form.as_view(), name = 'work_incoming'),
+	url(r'^work/incoming/$', views.incoming_form, name = 'work_incoming'),
+	# url(r'^work/outgoing/$', views.outgoing_form.as_view(), name = 'work_outgoing'),
+	url(r'^work/outgoing/$', views.outgoing_form, name = 'work_outgoing'),
+
 ]

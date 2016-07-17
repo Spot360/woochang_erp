@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from customers.models import Customer
 
+import datetime
+
 # Create your models here.
 class Material(models.Model):
 	customer = models.ForeignKey(Customer)
@@ -45,7 +47,7 @@ class Packing(models.Model):
 class Incoming(models.Model):
 	pallet = models.ForeignKey(Pallet)
 	material = models.ForeignKey(Material)
-	incoming_date = models.DateTimeField('date incoming')
+	incoming_date = models.DateTimeField(default = datetime.datetime.now)
 	incoming_unit = models.ForeignKey(Unit)
 	incoming_count = models.IntegerField(default = 0)
 	unpackBox_count = models.IntegerField(default = 0)
@@ -56,7 +58,7 @@ class Incoming(models.Model):
 class Outgoing(models.Model):
 	pallet = models.ForeignKey(Pallet)
 	material = models.ForeignKey(Material)
-	outgoing_date = models.DateTimeField('date outgoing')
+	outgoing_date = models.DateTimeField(default = datetime.datetime.now)
 	outgoing_unit = models.ForeignKey(Unit)
 	packing = models.ForeignKey(Packing)
 	outgoing_count = models.IntegerField(default = 0)
