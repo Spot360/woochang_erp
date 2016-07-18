@@ -3,13 +3,13 @@
 <body>
     <h1>{{Date}} Outgoing Work</h1>
     <div class="table-responsive">
-    <table class="table table-striped">
         <form action="" method = "post">
-            {% csrf_token %}
-            {{form.as_table}}
+            <table class="table table-striped">
+                {% csrf_token %}
+                {{form.as_table}}
+            </table>
+            <button type="submit", class="btn btn-primary">submit</button>
         </form>
-    </table>
-    <button type="submit", class="btn btn-primary">submit</button>
     </div>
 </body>
 {% endblock %}

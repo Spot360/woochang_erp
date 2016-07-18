@@ -262,7 +262,12 @@ def incoming_form(request):
 	return render(request, 'materials/incoming_form.html', context)
 
 def outgoing_form(request):
-	form = outgoingForm()
+	if request.method == 'POST':
+		form = outgoingForm(request.POST)
+		if form.is_valid():
+			form.save()
+	else:
+		form = outgoingForm()
 	context = {'form':form}
 	return render(request, 'materials/outgoing_form.html', context)
 
