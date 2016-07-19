@@ -256,6 +256,7 @@ def incoming_form(request):
 		form = incomingForm(request.POST)
 		if form.is_valid():
 			form.save()
+		form = incomingForm()
 	else:
 		form = incomingForm()
 	context = {'form':form}
@@ -266,6 +267,7 @@ def outgoing_form(request):
 		form = outgoingForm(request.POST)
 		if form.is_valid():
 			form.save()
+		form = outgoingForm()
 	else:
 		form = outgoingForm()
 	context = {'form':form}
