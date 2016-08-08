@@ -16,11 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
 
-# from costomers.views import *
-# from metarials.views import *
-
-urlpatterns = [
+urlpatterns = [    
+    url(r'^', include('home.urls', namespace="home")),
+    url(r'^admin/', include(admin.site.urls)),    
     url(r'^materials/', include('materials.urls', namespace="materials")),
-    url(r'^customers/', include('customers.urls', namespace="customers")),
-    url(r'^admin/', admin.site.urls),
+    url(r'^customers/', include('customers.urls', namespace="customers")),    
 ]
