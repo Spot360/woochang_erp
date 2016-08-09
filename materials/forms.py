@@ -18,4 +18,3 @@ class outgoingForm(ModelForm):
 	class Meta:
 		model = Outgoing
 		fields = {'pallet', 'material', 'outgoing_date', 'outgoing_unit', 'packing', 'outgoing_count', 'unpackBox_count'}
-		

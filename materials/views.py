@@ -34,7 +34,7 @@ def incoming(request):
 		raise Http404('Nothing information')
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
-	
+
 def incoming_material(request, material_id):
 	try:
 		material = Material.objects.get(id=material_id)
@@ -252,26 +252,28 @@ def result_detail(request, material_id=''):
 	return render(request, 'materials/result_detail.html', context)
 
 def incoming_form(request):
-	if request.method == 'POST':
-		form = incomingForm(request.POST)
-		if form.is_valid():
-			form.save()
-		form = incomingForm()
-	else:
-		form = incomingForm()
-	context = {'form':form}
-	return render(request, 'materials/incoming_form.html', context)
+    if request.method == 'POST':
+        form = incomingForm(request.POST)
+        if form.is_valid():
+            form.save()
+        form = incomingForm()
+    else:
+        form = incomingForm()
+
+    context = {'form':form}
+    return render(request, 'materials/incoming_form.html', context)
 
 def outgoing_form(request):
-	if request.method == 'POST':
-		form = outgoingForm(request.POST)
-		if form.is_valid():
-			form.save()
-		form = outgoingForm()
-	else:
-		form = outgoingForm()
-	context = {'form':form}
-	return render(request, 'materials/outgoing_form.html', context)
+    if request.method == 'POST':
+        form = outgoingForm(request.POST)
+        if form.is_valid():
+            form.save()
+        form = outgoingForm()
+    else:
+        form = outgoingForm()
+
+    context = {'form':form}
+    return render(request, 'materials/outgoing_form.html', context)
 
 
 

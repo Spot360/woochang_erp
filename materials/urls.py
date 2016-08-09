@@ -10,7 +10,7 @@ urlpatterns = [
 	url(r'^incoming/c(\d+)/$', views.incoming_customer, name="incoming_c"),
 	url(r'^incoming/z(\d+)/$', views.incoming_zone, name="incoming_z"),
 	url(r'^incoming/m(\d+)/$', views.incoming_material, name="incoming_m"),
-	
+
 	url(r'^outgoing/$', views.outgoing, name='outgoing'),
 	url(r'^outgoing/p(\d+)/$', views.outgoing_pallet, name="outgoing_p"),
 	url(r'^outgoing/c(\d+)/$', views.outgoing_customer, name="outgoing_c"),
