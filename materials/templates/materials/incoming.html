@@ -21,12 +21,12 @@
 		{% for incoming in incoming_list %}
 			<tr>
 				<td> {{incoming.incoming_date.year}}/{{incoming.incoming_date.month}}/{{incoming.incoming_date.day}}</td>
-				<td> <a href="c{{incoming.material.customer.id}}/">{{incoming.material.customer}}</a></td>
-				<td> <a href="m{{incoming.material.id}}/"> {{incoming.material.material_name}}</a></td>
+				<td> <a href="c{{incoming.material.customer.id}}"> {{incoming.material.customer}}</a></td>
+				<td> <a href="m{{incoming.material.id}}"> {{incoming.material.material_name}}</a></td>
 				<td> {{incoming.material.material_code}} </td>
 				<td> {{incoming.material.control_code}} </td>
-				<td> <a href="z{{incoming.pallet.zone.id}}/">{{incoming.pallet.zone}}</a></td>
-				<td> <a href="p{{incoming.pallet.id}}/"> {{incoming.pallet}}</a></td>
+				<td> <a href="z{{incoming.pallet.zone.id}}">{{incoming.pallet.zone}}</a></td>
+				<td> <a href="p{{incoming.pallet.id}}"> {{incoming.pallet}}</a></td>
 				<td> {{incoming.incoming_unit}} </td>
 				<td> {{incoming.incoming_count}} </td>
 			</tr>

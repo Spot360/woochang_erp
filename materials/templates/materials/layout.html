@@ -12,10 +12,9 @@
 
         <title>SPOT360 :: Smart Logistics System</title>
         <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="{% static 'materials/dist/css/bootstrap.min.css' %}" -->
+        <link rel="stylesheet" href="{% static 'materials/dist/css/bootstrap.min.css' %}">
         <!-- Custom styles for this template -->
-        <link rel="stylesheet" href="{% static 'materials/main.css' %}"-->
-
+        <link rel="stylesheet" href="{% static 'materials/main.css' %}">
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><![endif]-->
         <script src="{% static 'materials/assets/js/ie8-responsive-file-warning.js' %}"></script>
@@ -26,8 +25,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     </head>
 
-
-  <body>
+    <body>
         <img src="{% static 'home/img/top_bg.jpg' %}" class="align-center img-responsive">
 
         <nav class="navbar navbar-inverse navbar-top">
@@ -72,7 +70,7 @@
         <!--        		<li><a href="#">Zone 관리 현황</a></li>-->
         <!--        	</ul>-->
         <!--        </li>-->
-                <!--<li><a href="#">Reports</a></li>
+        <!--        <li><a href="#">Reports</a></li-->
         <!--        <li><a href="#">Analytics</a></li>-->
         <!--        <li><a href="#">Export</a></li>-->
         <!--      </ul>-->
@@ -90,7 +88,9 @@
         <!--      </ul>-->
         <!--    </div>-->
             <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">-->
+            <div class="body">
             {% block content %}{% endblock %}
+            </div>
             <!--</div>-->
         <!--  </div>-->
         <!--</div>-->

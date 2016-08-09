@@ -29,7 +29,7 @@ def index_detail(request, customer_id):
 
 def incoming(request):
 	try:
-		incoming_list = Incoming.objects.all().order_by('incoming_date')
+		incoming_list = Incoming.objects.all().order_by('-incoming_date')
 	except:
 		raise Http404('Nothing information')
 	context = {'incoming_list':incoming_list}
@@ -40,7 +40,7 @@ def incoming_material(request, material_id):
 		material = Material.objects.get(id=material_id)
 	except:
 		raise Http404('Nothing information')
-	incoming_list = material.incoming_set.all().order_by('material')
+	incoming_list = material.incoming_set.all().order_by('-incoming_date')
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 
@@ -49,7 +49,7 @@ def incoming_pallet(request, pallet_id):
 		pallet = Pallet.objects.get(id=pallet_id)
 	except:
 		raise Http404('Nothing information')
-	incoming_list = pallet.incoming_set.all().order_by('material')
+	incoming_list = pallet.incoming_set.all().order_by('-incoming_date')
 	context = {'incoming_list':incoming_list}
 	return render(request, 'materials/incoming.html', context)
 
@@ -87,7 +87,7 @@ def incoming_customer(request, customer_id):
 
 def outgoing(request):
 	try:
-		outgoing_list = Outgoing.objects.all().order_by('outgoing_date')
+		outgoing_list = Outgoing.objects.all().order_by('-outgoing_date')
 	except:
 	 	raise Http404('Nothing information')
 	context = {'outgoing_list':outgoing_list}
@@ -98,7 +98,7 @@ def outgoing_material(request, material_id):
 		material = Material.objects.get(id=material_id)
 	except:
 		raise Http404('Nothing information')
-	outgoing_list = material.outgoing_set.all().order_by('material')
+	outgoing_list = material.outgoing_set.all().order_by('-outgoing_date')
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
 
@@ -107,7 +107,7 @@ def outgoing_pallet(request, pallet_id):
 		pallet = Pallet.objects.get(id=pallet_id)
 	except:
 		raise Http404('Nothing information')
-	outgoing_list = pallet.outgoing_set.all().order_by('material')
+	outgoing_list = pallet.outgoing_set.all().order_by('-outgoing_date')
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
 
