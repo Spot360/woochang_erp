@@ -18,12 +18,12 @@
 					<table class="table table-striped">
 					<thead>
 						<tr>
-							<td><B>화주명</B></td>
-							<td><B>자재명</B></td>
-							<td><B>자재코드</B></td>
-							<td><B>관리코드</B></td>
-							<td><B>관리단위</B></td>
-							<td><B>낱개/박스</B></td>
+							<td><h4><B>화주명</B></h4></td>
+							<td><h4><B>자재명</B></h4></td>
+							<td><h4><B>자재코드</B></h4></td>
+							<td><h4><B>관리코드</B></h4></td>
+							<td><h4><B>관리단위</B></h4></td>
+							<td><h4><B>낱개/박스</B></h4></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,15 +31,16 @@
 						<tr>
 							{% if customer == 'Total' %}
 							<td>
-							<a href="c/{{material.customer.id}}/">{{material.customer}}</a> </td>
+							<a href="c/{{material.customer.id}}/"><h4><B>{{material.customer}} </B></h4></a> </td>
+
 							{% else %}
-							<td> {{material.customer}} </td>
+							<td><h7> {{material.customer}} </h7></td>
 							{% endif %}
-							<td> {{material.material_name}} </td>
-							<td> {{material.material_code}} </td>
-							<td> {{material.control_code}} </td>
-							<td> {{material.unit}} </td>
-							<td> {{material.Box_unit}} </td>
+							<td><h4> {{material.material_name}} </h4></td>
+							<td><h4> {{material.material_code}} </h4></td>
+							<td><h4> {{material.control_code}} </h4></td>
+							<td><h4> {{material.unit}} </h4></td>
+							<td><h4> {{material.Box_unit}} </h4></td>
 						</tr>
 					{% endfor %}
 					</tbody>
