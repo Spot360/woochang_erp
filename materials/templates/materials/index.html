@@ -2,39 +2,55 @@
 
 <html>
 	{% block content %}
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 	<body>
-		<h1>{{customer}} 자재 목록</h1>
-		<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<td><B>화주명</B></td>
-					<td><B>자재명</B></td>
-					<td><B>자재코드</B></td>
-					<td><B>관리코드</B></td>
-					<td><B>관리단위</B></td>
-					<td><B>낱개/박스</B></td>
-				</tr>
-			</thead>
-			<tbody>
-			{% for material in material_list %}
-				<tr>
-					{% if customer == 'Total' %}
-					<td>
-					<a href="c/{{material.customer.id}}/">{{material.customer}}</a> </td>
-					{% else %}
-					<td> {{material.customer}} </td>
-					{% endif %}
-					<td> {{material.material_name}} </td>
-					<td> {{material.material_code}} </td>
-					<td> {{material.control_code}} </td>
-					<td> {{material.unit}} </td>
-					<td> {{material.Box_unit}} </td>
-				</tr>
-			{% endfor %}
-			</tbody>
-		</table>
+
+	<section class="part-content">
+		<div class="row">
+			<div class=" grid12 no-sidebar">
+				<div class=" h1 home-title color2 acenter">{{customer}} 자재 목록</div>
+				<div class=" h2 home-subhead color2 acenter">고객님의 창고 상황을 한 눈에 보세요</div>
+				<div class="row">
+					<table class="table table-striped">
+					<thead>
+						<tr>
+							<td><B>화주명</B></td>
+							<td><B>자재명</B></td>
+							<td><B>자재코드</B></td>
+							<td><B>관리코드</B></td>
+							<td><B>관리단위</B></td>
+							<td><B>낱개/박스</B></td>
+						</tr>
+					</thead>
+					<tbody>
+					{% for material in material_list %}
+						<tr>
+							{% if customer == 'Total' %}
+							<td>
+							<a href="c/{{material.customer.id}}/">{{material.customer}}</a> </td>
+							{% else %}
+							<td> {{material.customer}} </td>
+							{% endif %}
+							<td> {{material.material_name}} </td>
+							<td> {{material.material_code}} </td>
+							<td> {{material.control_code}} </td>
+							<td> {{material.unit}} </td>
+							<td> {{material.Box_unit}} </td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+				</div>
+				<div class="space"></div>
+			</div>
 		</div>
+	</section>
+
+		
 	</body>
 	{% endblock %}
 </html>
