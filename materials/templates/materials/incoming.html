@@ -1,20 +1,21 @@
 {% extends "materials/layout.html" %}
 {% block content %}
 <body>
-	<h1>{{Date}} Incoming List</h1>
+	<!--<h1>{{Date}} Incoming List</h1>-->
+	<div class=" h1 home-title color2 acenter">{{Date}} Incoming List</div>
 	<div class="table-responsive">
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<td><B>Incoming Date</B></td>
-				<td><B>Customer's Name</B></td>
-				<td><B>Material's Name</B></td>
-				<td><B>Material's Code</B></td>
-				<td><B>Control Code</B></td>
-				<td><B>Zone Code</B></td>
-				<td><B>Pallet Code</B></td>
-				<td><B>Incoming Unit</B></td>
-				<td><B>Incoming Count</B></td>
+				<td><B>입고 날짜</B></td>
+				<td><B>화주명</B></td>
+				<td><B>자재명</B></td>
+				<td><B>자재코드</B></td>
+				<td><B>관리코드</B></td>
+				<td><B>위치코드</B></td>
+				<td><B>팔레트코드</B></td> 
+				<td><B>입고단위</B></td>
+				<td><B>입고개수</B></td>
 			</tr>
 		</thead>
 		<tbody>

@@ -2,18 +2,19 @@
 {% load staticfiles %}
 {% block content %}
 	<body>
-		<h1>{{customer}} Count Result List</h1>
+		<!--<h1>{{customer}} Count Result List</h1>-->
+		<div class=" h1 home-title color2 acenter">{{customer}} Count Result List</div>
 		<div class="table-responsive">
 
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<td><B>Customer's Name</B></td>
-					<td><B>Material's Name</B></td>
-					<td><B>Material's Code</B></td>
-					<td><B>Control Code</B></td>
-					<td><B>Total Box Count</B></td>
-					<td><B>Total EA Count</B></td>
+					<td><B>화주명</B></td>
+					<td><B>자재명</B></td>
+					<td><B>자재코드</B></td>
+					<td><B>관리코드</B></td>
+					<td><B>총 박스 개수</B></td>
+					<td><B>총 낱개 개수</B></td>
 					<!-- <td><B>Packing Box Count</B></td> -->
 					<td><B>Opened Box Count</B></td>
 				</tr>
