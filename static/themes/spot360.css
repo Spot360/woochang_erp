@@ -1,0 +1,123 @@
+ul li{line-height:22px !important;}
+a,a .color1{color:#456E73;}
+#part-footer a,.bg-color2 a{color:#CDD076;}
+
+/******************** HEADER ********************************/
+#part-header{background:url(images/bg-header.png) repeat-x;}
+#part-header #lead-image{position:absolute; left:0; top:0; z-index:0;}
+#part-header #nav-bg{position:absolute; left:0; bottom:0; height:60px; background:url(images/nav-bg.png) repeat-x; z-index:0; width:100%;}
+#part-header .logo{margin:0 auto; float:none; z-index:1; margin-top:20px;}
+/****************************************************************/
+
+/******************** MAIN NAV ********************************/
+#main-nav{width:100%; background-color:#2a2a2a; height:60px; border-top:solid 1px #1b1b1b; border-bottom:solid 1px #1b1b1b; margin-top:310px;}
+#main-nav .mini-nav-logo{float:left; margin-top:6px; margin-left:8px;}
+
+#main-nav > ul{height:60px; float:right;}
+#main-nav > ul li{line-height:60px;  border-right: solid 1px #1b1b1b; margin:0; padding:0; height:59px;}
+#main-nav > ul li a{color:#e7e7e7; text-transform:uppercase; line-height:60px; font-size:14px; width:100%; height:100%; display:block; text-align:center; cursor:pointer;  padding:0 15px;}
+
+#main-nav > ul > li:first-child{border-left: solid 1px #1b1b1b;}
+#main-nav > ul > li:last-child{border-right:none; margin:0 8px;}
+#main-nav > ul > li:last-child a{background:url(images/contact-btn-bg.png) repeat-x; border-radius:3px; border:solid 1px #000; height:45px; line-height:45px; }
+#main-nav > ul > li > a, .main-nav > ul > li > ul li a{border-bottom:none;}
+#main-nav ul li.current_page_ancestor > a, .main-nav ul li.current_page_item > a, .main-nav ul li.current_page_parent > a, .main-nav > ul > li > a:hover, .main-nav > ul > li > a.active, .main-nav > ul > li:hover > a, .main-nav > ul > li.active > a, .main-nav > ul > li > ul li a:hover, .main-nav > ul > li > ul li a.active, .main-nav > ul > li > ul > li:hover > a, .main-nav > ul > li > ul > li.active > a{border-bottom:none; background-color:#353535;} 
+
+#main-nav ul li ul.sub-menu {left:0; box-shadow:1px 3px 4px #555; width:100%;} 
+#main-nav ul li ul.sub-menu li{}
+#main-nav ul li ul.sub-menu li a{background-color:#282828; font-weight:bold; font-size:14px; text-align:left;}
+#main-nav ul li ul.sub-menu li a:hover{background-color:#4C4C4C;}
+/****************************************************************/
+
+/******************** HOMEPAGE *****************************/
+.h1.home-title{margin-bottom:2px; font-size:51px; color:#353535; }
+.h2.home-subhead{color:#a2a2a2; font-style:italic; font-size:24px;}
+
+.home-slider{padding-top:0; padding-bottom:0;}
+.home-slider .flex-control-nav{position:absolute; right:10px; bottom:0;}
+.home-slider .slidable .flex-control-nav li a.flex-active,.slidable .flex-control-nav li a.flex-active{border-color:#CDD076;}
+
+#what-we-do{ }
+/*#what-we-do .socials{background:url(images/what-we-do-socials.png) no-repeat;width:185px; height:185px; display:block; float:left; }*/
+#what-we-do a{text-decoration: none; color:#363636;} 
+#what-we-do h3{margin-top:10px; }
+#what-we-do a:hover{text-decoration:underline;}
+#what-we-do .sem{}
+#what-we-do .dev{}
+#what-we-do .mobile{}
+#what-we-do .it{}
+
+.home-section-title{background:none; border-top:solid 1px #e4e4e4; border-bottom:solid 1px #e4e4e4; height:58px; padding:0; background-color:#f9f9f9;}
+.home-section-title .section-title{text-transform:uppercase; border-right:solid 1px #e4e4e4; font-size:24px; color:#353535; padding:0; line-height:58px; font-weight:bold; }
+
+.home .recent_posts_post_content h3 a{color:#353535;}
+.home .recent_posts_post_content{border-right: solid 1px #f2f2f2; padding-right:10px;}
+
+/****************************************************************/
+
+/******************** REQUEST A QUOTE *******************/
+.wpcf7-form label{font-weight:bold; font-size:14px; display:block; margin-bottom:5px;}
+
+.wpcf7-list-item label{float:left; clear:left;}
+.wpcf7-list-item label span{margin:5px 0; float:left;}
+.wpcf7-form input[type=checkbox]{float:left; clear:left; width:40px; margin:8px 0;}
+
+.wpcf7-submit.ish-button-big{width:200px;}
+
+/****************************************************************/
+
+/******************** PAGE WITH SIDEBAR ******************/
+.page .with-right-sidebar{padding:28px 0 40px 0;}
+.page .right-sidebar{padding-top:28px;}
+/****************************************************************/
+
+/******************** BLOG ************************************/
+.blog-post h1{font-size:28px;}
+.blog-post .lined-section-only{margin-top:15px; margin-bottom:15px;}
+.blog-post .blog-post-title{font-size:31px; line-height:37px; padding:5px 0; font-weight:bold; color:#456E73;}
+.blog-post .blog-post-title-link{text-decoration:none;}
+.blog-post .blog-post-details{margin-bottom:10px;}
+.main-post-image{margin-top:25px; margin-bottom:5px;}
+
+.single-post .part-lead h1{color:#456E73; font-size:34px;}
+.blog-comments .blog-post-details p{margin:10px 0;}
+.single-post p,.single-post ul,.single-post ol,.single-post div{font-size:14px;}
+/****************************************************************/
+
+/******************** PORTFOLIO *****************************/
+h3.portfolio-title{text-align:center;}
+/****************************************************************/
+@media all and (max-width: 1100px) {
+#main-nav ul li ul.sub-menu li a, #main-nav > ul li a{font-size:12px;}
+}
+@media all and (max-width: 950px) {
+#main-nav > ul li a{padding:0 10px;}
+}
+@media all and (max-width: 885px) {
+.home-section-title .grid1,.home-section-title .grid8{display:none;}
+.part-header select.tinynav{ float: right; height: 36px; line-height: 1; margin-top: 11px; padding: 0 5px 5px 5px; font-size:16px; width: 85% !important;}
+.blog .with-right-sidebar,.single .with-right-sidebar{margin-right:0px; width:100%;}
+#main-nav{margin-top:150px;}
+#lead-image{height:150px;}
+#part-header .logo{margin-top:-15px;}
+.logo img{height:150px}
+pre,code{overflow:auto; max-width:100%; word-wrap:break-word;}
+}
+
+
+/******************** GENERAL *******************************/
+.box.iconic .box-icon:before{right:0; top:0; font-size:49px;}
+.with-right-sidebar{width:69.9%; margin-right:6%;}
+.bold{font-weight:bold;}
+.absolute{position:absolute;}
+.z2{z-index:2; left:0;}
+.top10{margin-top:10px;}
+
+.colorDev{color:#7EAB9B;}
+.ish-icon-circle.colorDev span{ background-color:#7EAB9B !important;}
+
+.colorIM{color:#446D71;}
+.ish-icon-circle.colorIM span{ background-color:#446D71 !important;}
+#wpstats{display:none;}
+/*backup green #a0ce3a */
+/****************************************************************/
