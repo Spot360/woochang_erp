@@ -2,14 +2,14 @@
 {% block content %}
 <body>
     <!--<h1>{{Date}} Outgoing Work</h1>-->
-    <div class=" h1 home-title color2 acenter">{{Date}} Outgoing Work</div>
+    <div class=" h2 home-title color2 acenter">{{Date}} 출고 작업</div>
     <div class="table-responsive">
         <form action="" method = "post">
             <table class="table table-striped">
                 {% csrf_token %}
                 {{form.as_table}}
             </table>
-            <button type="submit", class="btn btn-primary">submit</button>
+            <button type="submit", class="btn btn-primary">확인</button>
         </form>
     </div>
 </body>
