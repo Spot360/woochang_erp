@@ -26,9 +26,6 @@ SECRET_KEY = 'o(-a#!ux5h&=+envkyc@9oo-@4j%0pez=7(q+2!v56oxyu&ou0'
 DEBUG = True
 ALLOWED_HOSTS = ['spot360.pythonanywhere.com'] # if Debug=False
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
