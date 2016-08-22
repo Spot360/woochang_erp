@@ -1,0 +1,48 @@
+===============================================================
+python manage.py command collection
+===============================================================
+Creating a project
+>> django-admin.py startproject mysite
+
+A Development Server
+>> python manage.py runserver
+
+Make New App
+>> python manage.py startapp [appname]
+
+데이터베이스에 모델을 위한 테이블 만들기
+장고 모델에 (우리가 방금 만든!) 몇 가지 변화가 생겼다는 걸 알게 해줘야 합니다
+>> python manage.py makemigrations blog
+
+실제 데이터베이스에 모델 추가를 반영하겠습니다.
+>>python manage.py migrate blog
+
+===============================================================
+linux command collection
+===============================================================
+folder rename
+>> mv woochang_erp woochang_erp_160821 
+
+===============================================================
+git command collection
+===============================================================
+clone - make new repository
+>> git clone https://github.com/Spot360/woochang_erp.git
+
+update
+>> git pull
+
+
+===============================================================
+about google map
+===============================================================
+
+API 관리자 :: 사용자 인증 정보
+https://console.developers.google.com/projectselector/apis/credentials?hl=ko
+
+프로젝트 생성 및 ID
+project id : spot360-141015
+
+make API Key 
+name = spot360_map
+key = AIzaSyD3MwjzDKCj88WC9vXQ5zv73GUtj-XKiCc
