@@ -8,8 +8,11 @@ def index(request):
 def about(request):
     return render (request, 'home/about.html')
 
-def service(request):
-    return render (request, 'home/service.html')
+def service_3PL(request):
+    return render (request, 'home/service_3PL.html')
+
+def service_IT(request):
+    return render (request, 'home/service_IT.html')   
 
 def contactus(request):
     return render (request, 'home/contactus.html')
