@@ -122,7 +122,7 @@ def outgoing_zone(request, zone_id):
 		pallet_id.append(pallet.id)
 	outgoing_list = []
 	for id in pallet_id:
-		outgoing = Outgoing.objects.filter(pallet_id = id)
+		outgoing = Outgoing.objects.filter(pallet_id = id).order_by('-outgoing_date')
 		outgoing_list += outgoing
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
@@ -138,14 +138,11 @@ def outgoing_customer(request, customer_id):
 		material_id.append(material.id)
 	outgoing_list = []
 	for id in material_id:
-		outgoing = Outgoing.objects.filter(material_id=id)
+		outgoing = Outgoing.objects.filter(material_id=id).order_by('-outgoing_date')
 		outgoing_list += outgoing
 	context = {'outgoing_list':outgoing_list}
 	return render(request, 'materials/outgoing.html', context)
-
-def submit(request):
-	return HttpResponse("Star WooChang Material ERP")
-
+	
 def result(request, customer_id=''):
 	if customer_id == '':
 		material_list = Material.objects.all()
