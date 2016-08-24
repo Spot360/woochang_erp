@@ -16,6 +16,7 @@
 				<td><B>팔레트코드</B></td> 
 				<td><B>입고단위</B></td>
 				<td><B>입고개수</B></td>
+				<td><B>수정</B></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +31,7 @@
 				<td> <a href="p{{incoming.pallet.id}}"> {{incoming.pallet}}</a></td>
 				<td> {{incoming.incoming_unit}} </td>
 				<td> {{incoming.incoming_count}} </td>
+				<td> <a class="btn btn-default" href="edit{{incoming.pk}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
 			</tr>
 		{% endfor %}
 		</tbody>

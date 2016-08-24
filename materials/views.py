@@ -260,6 +260,18 @@ def incoming_form(request):
     context = {'form':form}
     return render(request, 'materials/incoming_form.html', context)
 
+def incoming_edit(request, pk):
+	incoming = get_object_or_404(Incoming, pk=pk)
+	if request.method == 'POST':
+		form = incomingForm(request.POST, instance=incoming)
+		if form.is_valid():
+			form.save()
+		form = incomingForm()
+	else:
+		form = incomingForm(instance=incoming)
+	context = {'form':form}
+	return render(request, 'materials/incoming_form.html', context)
+
 def outgoing_form(request):
     if request.method == 'POST':
         form = outgoingForm(request.POST)
