@@ -7,6 +7,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<td><B>선택</B></td>
 				<td><B>입고 날짜</B></td>
 				<td><B>화주명</B></td>
 				<td><B>자재명</B></td>
@@ -22,6 +23,7 @@
 		<tbody>
 		{% for incoming in incoming_list %}
 			<tr>
+				<td> <form actionc=""><input type="checkbox" name="select" value={{incoming.id}}></td>
 				<td> {{incoming.incoming_date.year}}/{{incoming.incoming_date.month}}/{{incoming.incoming_date.day}}</td>
 				<td> <a href="c{{incoming.material.customer.id}}"> {{incoming.material.customer}}</a></td>
 				<td> <a href="m{{incoming.material.id}}"> {{incoming.material.material_name}}</a></td>

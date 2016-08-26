@@ -11,6 +11,7 @@
         <table class="table table-striped">
 	        <thead>
 	            <tr>
+					<td><B>선택</B></td>
 					<td><B>출고 날짜</B></td>
 	            	<td><B>화주명</B></td>
 	                <td><B>자재명</B></td>
@@ -21,11 +22,13 @@
 	                <td><B>출하단위</B></td>
 					<td><B>포장관리</B></td>
 					<td><B>출하개수</B></td>
+					<td><B>수정</B></td>
 	            </tr>
 	        </thead>
             <tbody>
 				{% for outgoing in outgoing_list %}
 				<tr>
+					<td> <form actionc=""><input type="checkbox" name="select" value={{outgoing.id}}></td>
 					<td> {{outgoing.outgoing_date.year}}/{{outgoing.outgoing_date.month}}/{{outgoing.outgoing_date.day}}</td>
 					<td> <a href="c{{outgoing.material.customer.id}}">{{outgoing.material.customer}}</a></td>
 					<td> <a href="m{{outgoing.material.id}}"> {{outgoing.material.material_name}}</a></td>
@@ -40,6 +43,7 @@
 					<td> {{outgoing.packing}} </td>
 					{% endif %}
 					<td> {{outgoing.outgoing_count}} </td>
+					<td> <a class="btn btn-default" href="edit{{outgoing.pk}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
 				</tr>
             {% endfor %}
             </tbody>

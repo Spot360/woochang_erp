@@ -26,5 +26,6 @@ urlpatterns = [
 	url(r'^incoming/edit(?P<pk>[0-9]+)', views.incoming_edit, name = 'work_incoming_edit'),
 	# url(r'^work/outgoing/$', views.outgoing_form.as_view(), name = 'work_outgoing'),
 	url(r'^work/outgoing/$', views.outgoing_form, name = 'work_outgoing'),
+	url(r'^outgoing/edit(?P<pk>[0-9]+)', views.outgoing_edit, name = 'work_outgoing_edit'),
 
 ]

@@ -284,7 +284,17 @@ def outgoing_form(request):
     context = {'form':form}
     return render(request, 'materials/outgoing_form.html', context)
 
-
+def outgoing_edit(request, pk):
+	outgoing = get_object_or_404(Outgoing, pk=pk)
+	if request.method == 'POST':
+		form = outgoingForm(request.POST, instance=outgoing)
+		if form.is_valid():
+			form.save
+		form = outgoingForm()
+	else:
+		form = outgoingForm(instance=outgoing)
+	context = {'form':form}
+	return render(request, 'materials/outgoing_form.html', context)
 
 # class incoming_form(FormView):
 # 	success_url = '/success/'
