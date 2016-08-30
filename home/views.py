@@ -16,3 +16,7 @@ def service_it(request):
 
 def contactus(request):
     return render (request, 'home/contactus.html')
+
+def account(request):
+    return render (request, 'home/contactus.html')    
+    

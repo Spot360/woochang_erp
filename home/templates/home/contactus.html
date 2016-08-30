@@ -1,51 +1,80 @@
 {% extends "home/layout.html" %}
 <html>
 {% block content %}
- <meta charset="UTF-8">
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script>
-    var myCenter=new google.maps.LatLng(37.3042276,127.32332810000003);
-
-    function initialize()
-    {
-        var mapProp = {
-            center:myCenter,
-            zoom:10,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-        var marker=new google.maps.Marker({
-            position:myCenter,
-            animation:google.maps.Animation.BOUNCE
-        });
-        marker.setMap(map);
-        var infowindow = new google.maps.InfoWindow({
-            content:"SPOT360 (본사)"
-        });
-        infowindow.open(map,marker);
-              
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
 	<body>
-         <h2 class="lined-section widget-title">&nbsp; &nbsp; &nbsp; &nbsp;Contact Us<span></span></h2>
-        <div id="googleMap" style="width:500px;height:380px;margin:0 auto;"></div>
-
-
-        <div class="textwidget"><p><b>Spot360 ICT (Information and Communications Technologies)</b><br />
-        한글) SPOT360, 경기도 광주시 도척면 <br />
-        도척윗로 722-10<br /><br />
-
-        English) SPOT360, 722-10, Docheogwit-ro, <br />
-        Docheok-myeon, Gwangju-si, <br />
-        Gyeonggi-do, Korea<br /><br />
+        <!-- Lead part section -->
+        <section class="part-lead lead-unboxed" id="part-lead">
+            <p><div class="google-map" id="google-map-1" data-latlng1="37.3042276,127.32332810000003" data-zoom="15"></div></p>
+        </section>
+        <!-- Lead part section END -->
+        
+        <!-- Content part section -->
+        <section class="part-content">
+            <div class="row">
+                <div class=" grid12 no-sidebar">
+                    <div class="row">
+                        <p>&nbsp;</p>
                         
-        E-Mail) spot360.team@gmail.com</p>
+                        <p>Spot360를 방문해 주셔서 감사합니다. 고객 편의 극대화와 클라우드 시스템 도입으로 여러분의 비즈니스에 도움이 될 수 있도록 노력하겠습니다.</br>
+                            <a title="3PL &amp; Logistics" href="/services_3pl/">저희의 3PL 물류 시스템과</a>, <a href="/services_it/">유통을 데이타화 빅데이터</a>는
+                            고객님의 새로운 기획과 고객 분석 요구에 대응하며, 믿을 수 있는 제품 관리로 최종 소비자에게 큰 만족감을 전달 할 수 있습니다.</p>
+                        <p>문의 사항과 요청 사항이 있으면 아래 형식을 사용하여 보내주세요.
+                        열린 소통의 기업으로 고객님의 목소리를 듣겠습니다. 함께 할 수 있는 비즈니스가 되길 바랍니다.</p>
+                        
+                        <div class="grid4">
+                            <h3 class="lined-section" id="contact">Contact info<span></span></h3>
+                            <p><span class=" h4 color1">Spot360 본사</span></p>
+                            <p>한글) SPOT360, 경기도 광주시 도척면 도척윗로 722-10</p>
+                            <p>English) SPOT360, 722-10, Docheogwit-ro,</p>
+                            <p>Docheok-myeon, Gwangju-si, Gyeonggi-do, Korea</p>
 
+                            <p><span class=" h4 color1">Email us:</span></p>
+                            <p>spot360.team@gmail.com</p>
+
+                            <!--<p><span class=" h4 color1">Follow us:</span></p>
+                            <p><span class="ish-icon-square color2 aleft" style=""><a href="https://www.facebook.com/spot360.team" target="_blank"><span class="icon-facebook" style="font-size:22px;width:40px;height:40px;padding-top:9px !important;"></span></a></span></p>-->
+                            <!--<p><span class="ish-icon-square color2 aleft" style=""><a href="http://twitter.com/cypressnorth" target="_blank"><span class="icon-twitter" style="font-size:22px;width:40px;height:40px;padding-top:9px !important;"></span></a></span></p>
+                            <p><span class="ish-icon-square color2 aleft" style=""><a href="https://plus.google.com/b/101555128123742735489" target="_blank"><span class="icon-googleplus-rect" style="font-size:22px;width:40px;height:40px;padding-top:9px !important;"></span></a></span></p>
+                            <p><span class="ish-icon-square color2 aleft" style=""><a href="http://instagram.com/cypressnorth" target="_blank"><span class="icon-instagram" style="font-size:22px;width:40px;height:40px;padding-top:9px !important;"></span></a></span></p>-->
+                        </div>
+
+                        <div class="grid9">
+                            <h3 class="lined-section" id="contact">Write to us<span></span></h3>
+                            <div role="form" class="wpcf7" id="wpcf7-f317-p3415-o1" dir="ltr">
+                                <div class="screen-reader-response"></div>
+                                <form action="/contact/#wpcf7-f317-p3415-o1" method="post" class="wpcf7-form" novalidate="novalidate">                            
+                                    <div style="display: none;">
+                                        <input type="hidden" name="_wpcf7" value="317" />
+                                        <input type="hidden" name="_wpcf7_version" value="4.5" />
+                                        <input type="hidden" name="_wpcf7_locale" value="" />
+                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f317-p3415-o1" />
+                                        <input type="hidden" name="_wpnonce" value="2bf3e42f74" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="grid4">
+                                        <label>이름 (필수)</label><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" /></span></p>
+                                        <p>
+                                            <label>e-Mail (필수)</label><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" /></span>
+                                        </p>
+                                        </div>
+                                        <div class="grid8">
+                                        <p><label>제목</label><span class="wpcf7-form-control-wrap your-subject"><input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" /></span></p>
+                                        <p><label>내용</label><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"></textarea></span> </p>
+                                        <!--<p><label>인증번호</label><input type="hidden" name="_wpcf7_captcha_challenge_captcha-956" value="1300842782" /><img class="wpcf7-form-control wpcf7-captchac wpcf7-captcha-captcha-956" width="84" height="28" alt="captcha" src="http://cypressnorth.com/wp-content/uploads/wpcf7_captcha/1300842782.png" /><span class="wpcf7-form-control-wrap captcha-956"><input type="text" name="captcha-956" value="" size="40" class="wpcf7-form-control wpcf7-captchar" autocomplete="off" aria-invalid="false" /></span></p>-->
+                                        <p class="aright"><input type="submit" class="wpcf7-form-control wpcf7-submit ish-button-big" value="전송" onClick="_gaq.push(['_trackEvent', 'Contact', 'Contact Form',,, false]);"></p>
+                                        </div>
+                                    </div>
+                                    <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lined-section-only"><span></span></div>
+                    <div class="space"></div>                                
+                </div>                
+            </div>
+        </section>
+        <!-- Content part section END -->
 	</body>
 {% endblock %}    
 </html>
