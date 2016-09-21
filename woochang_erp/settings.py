@@ -133,3 +133,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+DEFAULT_FROM_EMAIL = 'spot360.team@gmail.com'
+EMAIL_HOST_USER = 'spot360.team'
+EMAIL_HOST_PASSWORD = 'spot360wsj'
+EMAIL_USE_TLS = False 
+EMAIL_PORT = 1025
